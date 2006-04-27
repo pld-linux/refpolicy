@@ -8,6 +8,7 @@ Release:	0.2
 License:	GPL
 Group:		Base
 Source0:	http://dl.sourceforge.net/serefpolicy/%{name}-%{version}.tar.bz2
+# Source0-md5:	37e1d4125304485b17bb7731f62d6bab
 Source1:	%{name}-modules-targeted.conf
 Source2:	%{name}-booleans-targeted.conf
 Source3:	%{name}-setrans-targeted.conf
