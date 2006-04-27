@@ -1,0 +1,24 @@
+--- serefpolicy-2.2.25/Makefile.org	2006-04-09 04:57:02.337458250 +0200
++++ serefpolicy-2.2.25/Makefile	2006-04-09 04:59:27.574535000 +0200
+@@ -250,9 +250,9 @@
+ endif
+ 
+ # extract settings from modules.conf
+-BASE_MODS := $(addsuffix .te,$(sort $(shell awk '/^[[:blank:]]*[[:alpha:]]/{ if ($$3 == "$(MODBASE)") print $$1 }' $(MOD_CONF) 2> /dev/null)))
+-MOD_MODS := $(addsuffix .te,$(sort $(shell awk '/^[[:blank:]]*[[:alpha:]]/{ if ($$3 == "$(MODMOD)") print $$1 }' $(MOD_CONF) 2> /dev/null)))
+-OFF_MODS := $(addsuffix .te,$(sort $(shell awk '/^[[:blank:]]*[[:alpha:]]/{ if ($$3 == "$(MODUNUSED)") print $$1 }' $(MOD_CONF) 2> /dev/null)))
++BASE_MODS := $(addsuffix .te,$(sort $(shell gawk '/^[[:blank:]]*[[:alpha:]]/{ if ($$3 == "$(MODBASE)") print $$1 }' $(MOD_CONF) 2> /dev/null)))
++MOD_MODS := $(addsuffix .te,$(sort $(shell gawk '/^[[:blank:]]*[[:alpha:]]/{ if ($$3 == "$(MODMOD)") print $$1 }' $(MOD_CONF) 2> /dev/null)))
++OFF_MODS := $(addsuffix .te,$(sort $(shell gawk '/^[[:blank:]]*[[:alpha:]]/{ if ($$3 == "$(MODUNUSED)") print $$1 }' $(MOD_CONF) 2> /dev/null)))
+ 
+ # add module overrides from command line
+ BASE_MODS += $(APPS_BASE)
+@@ -273,7 +273,7 @@
+ # parse-rolemap modulename,outputfile
+ define parse-rolemap
+ 	$(verbose) m4 $(M4PARAM) $(ROLEMAP) | \
+-		awk '/^[[:blank:]]*[A-Za-z]/{ print "gen_require(type " $$3 "; role " $$1 ";)\n$1_per_userdomain_template(" $$2 "," $$3 "," $$1 ")" }' >> $2
++		gawk '/^[[:blank:]]*[A-Za-z]/{ print "gen_require(type " $$3 "; role " $$1 ";)\n$1_per_userdomain_template(" $$2 "," $$3 "," $$1 ")" }' >> $2
+ endef
+ 
+ # peruser-expansion modulename,outputfile
