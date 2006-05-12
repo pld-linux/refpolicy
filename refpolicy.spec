@@ -2,6 +2,7 @@
 %define		polyinstatiate n
 %define		POLICYVER 20
 Summary:	SELinux policy configuration
+Summary(pl):	Konfiguracja polityki SELinuksa
 Name:		refpolicy
 Version:	20060307
 Release:	0.2
@@ -38,8 +39,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 SELinux Reference Policy - modular.
 
+%description -l pl
+Wzorcowa polityka SELinuksa - modularna.
+
 %package mls
 Summary:	SELinux mls base policy
+Summary(pl):	Podstawowa polityka mls SELinuksa
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
@@ -50,8 +55,12 @@ Obsoletes:	selinux-policy-mls-sources
 %description mls
 SELinux Reference policy mls base module.
 
+%description mls -l pl
+Podstawowy modu³ mls wzorcowej polityki SELinuksa.
+
 %package strict
 Summary:	SELinux strict base policy
+Summary(pl):	Podstawowa surowa polityka SELinuksa
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
@@ -62,8 +71,12 @@ Obsoletes:	selinux-policy-strict-sources
 %description strict
 SELinux Reference policy strict base module.
 
+%description strict -l pl
+Podstawowy modu³ surowej (strict) wzorcowej polityki SELinuksa.
+
 %package targeted
 Summary:	SELinux targeted base policy
+Summary(pl):	Postawowa polityka SELinuksa targeted
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
@@ -73,6 +86,9 @@ Obsoletes:	selinux-policy-targeted-sources
 
 %description targeted
 SELinux Reference policy targeted base module.
+
+%description targeted -l pl
+Podstawowy modu³ wzorzowej polityki SELinuksa targeted.
 
 %define ARGS NAME=\%1 TYPE=\%2 DISTRO=%{distro} DIRECT_INITRC=\%3 MONOLITHIC=n POLY=\%3
 
