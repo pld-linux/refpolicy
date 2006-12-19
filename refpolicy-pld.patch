@@ -44,7 +44,7 @@ diff -ur refpolicy.org/policy/modules/services/portmap.fc refpolicy.pld/policy/m
 +/sbin/pmap_set		--	gen_context(system_u:object_r:portmap_helper_exec_t,s0)
 +')
 +
- /var/run/portmap.upgrade-state -- gen_context(system_u:object_r:portmap_var_run_t,s0)
+ /var/run/portmap\.upgrade-state -- gen_context(system_u:object_r:portmap_var_run_t,s0)
 diff -ur refpolicy.org/policy/modules/services/postfix.fc refpolicy.pld/policy/modules/services/postfix.fc
 --- refpolicy.org/policy/modules/services/postfix.fc	2006-02-21 19:25:34.000000000 +0100
 +++ refpolicy.pld/policy/modules/services/postfix.fc	2006-04-18 01:55:12.941433250 +0200
@@ -90,18 +90,6 @@ diff -ur refpolicy.org/policy/modules/services/ssh.fc refpolicy.pld/policy/modul
  
  ifdef(`targeted_policy', `', `
  /usr/bin/ssh-agent		--	gen_context(system_u:object_r:ssh_agent_exec_t,s0)
-diff -ur refpolicy.org/policy/modules/services/ssh.if refpolicy.pld/policy/modules/services/ssh.if
---- refpolicy.org/policy/modules/services/ssh.if	2006-03-03 00:47:29.000000000 +0100
-+++ refpolicy.pld/policy/modules/services/ssh.if	2006-04-14 03:03:38.203074500 +0200
-@@ -479,7 +479,7 @@
- 	auth_domtrans_chk_passwd($1_t)
- 	auth_rw_login_records($1_t)
- 	auth_rw_lastlog($1_t)
--	auth_append_faillog($1_t)
-+	auth_rw_faillog($1_t)
- 
- 	corecmd_read_bin_symlinks($1_t)
- 	corecmd_getattr_bin_files($1_t)
 diff -ur refpolicy.org/policy/modules/services/telnet.fc refpolicy.pld/policy/modules/services/telnet.fc
 --- refpolicy.org/policy/modules/services/telnet.fc	2006-02-21 19:25:34.000000000 +0100
 +++ refpolicy.pld/policy/modules/services/telnet.fc	2006-04-18 02:10:59.617243500 +0200
@@ -118,9 +106,9 @@ diff -ur refpolicy.org/policy/modules/services/tftp.fc refpolicy.pld/policy/modu
 --- refpolicy.org/policy/modules/services/tftp.fc	2006-02-21 19:25:34.000000000 +0100
 +++ refpolicy.pld/policy/modules/services/tftp.fc	2006-04-18 02:08:52.133042250 +0200
 @@ -3,3 +3,8 @@
- /usr/sbin/in\.tftpd	--	gen_context(system_u:object_r:tftpd_exec_t,s0)
  
- /tftpboot(/.*)?			gen_context(system_u:object_r:tftpdir_t,s0)
+ /tftpboot		-d	gen_context(system_u:object_r:tftpdir_t,s0) 
+ /tftpboot/.*			gen_context(system_u:object_r:tftpdir_t,s0)
 +
 +ifdef(`distro_pld', `
 +/usr/sbin/tftpd		--	gen_context(system_u:object_r:tftpd_exec_t,s0)
@@ -152,9 +140,9 @@ diff -ur refpolicy.org/policy/modules/system/init.fc refpolicy.pld/policy/module
 +/etc/rc\.d/rc\.init	--	gen_context(system_u:object_r:initrc_t,s0)
 +')
 +
- ifdef(`targeted_policy', `', `
- /etc/X11/prefdm		--	gen_context(system_u:object_r:initrc_exec_t,s0)
- ')
+ ifdef(`distro_gentoo',`
+ /etc/vmware/init\.d/vmware --	gen_context(system_u:object_r:initrc_exec_t,s0)
+ /etc/x11/startDM.sh	--	gen_context(system_u:object_r:initrc_exec_t,s0)
 @@ -47,6 +51,10 @@
  /var/run/svscan\.pid	--	gen_context(system_u:object_r:initrc_var_run_t,s0)
  ')
