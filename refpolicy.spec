@@ -2,7 +2,7 @@
 %define		polyinstatiate n
 %define		POLICYVER 20
 Summary:	SELinux policy configuration
-Summary(pl):	Konfiguracja polityki SELinuksa
+Summary(pl.UTF-8):   Konfiguracja polityki SELinuksa
 Name:		refpolicy
 Version:	20061212
 Release:	0.2
@@ -39,12 +39,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 SELinux Reference Policy - modular.
 
-%description -l pl
+%description -l pl.UTF-8
 Wzorcowa polityka SELinuksa - modularna.
 
 %package mls
 Summary:	SELinux mls base policy
-Summary(pl):	Podstawowa polityka mls SELinuksa
+Summary(pl.UTF-8):   Podstawowa polityka mls SELinuksa
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
@@ -55,12 +55,12 @@ Obsoletes:	selinux-policy-mls-sources
 %description mls
 SELinux Reference policy mls base module.
 
-%description mls -l pl
-Podstawowy modu≥ mls wzorcowej polityki SELinuksa.
+%description mls -l pl.UTF-8
+Podstawowy modu≈Ç mls wzorcowej polityki SELinuksa.
 
 %package strict
 Summary:	SELinux strict base policy
-Summary(pl):	Podstawowa surowa polityka SELinuksa
+Summary(pl.UTF-8):   Podstawowa surowa polityka SELinuksa
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
@@ -71,12 +71,12 @@ Obsoletes:	selinux-policy-strict-sources
 %description strict
 SELinux Reference policy strict base module.
 
-%description strict -l pl
-Podstawowy modu≥ surowej (strict) wzorcowej polityki SELinuksa.
+%description strict -l pl.UTF-8
+Podstawowy modu≈Ç surowej (strict) wzorcowej polityki SELinuksa.
 
 %package targeted
 Summary:	SELinux targeted base policy
-Summary(pl):	Postawowa polityka SELinuksa targeted
+Summary(pl.UTF-8):   Postawowa polityka SELinuksa targeted
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
@@ -87,8 +87,8 @@ Obsoletes:	selinux-policy-targeted-sources
 %description targeted
 SELinux Reference policy targeted base module.
 
-%description targeted -l pl
-Podstawowy modu≥ wzorzowej polityki SELinuksa targeted.
+%description targeted -l pl.UTF-8
+Podstawowy modu≈Ç wzorzowej polityki SELinuksa targeted.
 
 %define ARGS NAME=\%1 TYPE=\%2 DISTRO=%{distro} DIRECT_INITRC=\%3 MONOLITHIC=n POLY=\%3
 
