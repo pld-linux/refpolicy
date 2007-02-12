@@ -2,7 +2,7 @@
 %define		polyinstatiate n
 %define		POLICYVER 20
 Summary:	SELinux policy configuration
-Summary(pl.UTF-8):   Konfiguracja polityki SELinuksa
+Summary(pl.UTF-8):	Konfiguracja polityki SELinuksa
 Name:		refpolicy
 Version:	20061212
 Release:	0.2
@@ -44,7 +44,7 @@ Wzorcowa polityka SELinuksa - modularna.
 
 %package mls
 Summary:	SELinux mls base policy
-Summary(pl.UTF-8):   Podstawowa polityka mls SELinuksa
+Summary(pl.UTF-8):	Podstawowa polityka mls SELinuksa
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
@@ -60,7 +60,7 @@ Podstawowy moduł mls wzorcowej polityki SELinuksa.
 
 %package strict
 Summary:	SELinux strict base policy
-Summary(pl.UTF-8):   Podstawowa surowa polityka SELinuksa
+Summary(pl.UTF-8):	Podstawowa surowa polityka SELinuksa
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
@@ -76,7 +76,7 @@ Podstawowy moduł surowej (strict) wzorcowej polityki SELinuksa.
 
 %package targeted
 Summary:	SELinux targeted base policy
-Summary(pl.UTF-8):   Postawowa polityka SELinuksa targeted
+Summary(pl.UTF-8):	Postawowa polityka SELinuksa targeted
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Requires:	coreutils
