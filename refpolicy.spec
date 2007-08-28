@@ -4,12 +4,12 @@
 Summary:	SELinux policy configuration
 Summary(pl.UTF-8):	Konfiguracja polityki SELinuksa
 Name:		refpolicy
-Version:	20070417
+Version:	20070629
 Release:	0.2
 License:	GPL
 Group:		Base
 Source0:	http://oss.tresys.com/files/refpolicy/%{name}-%{version}.tar.bz2
-# Source0-md5:	6d34764580b8e29175ef278f1df87baa
+# Source0-md5:	8762233602b1e660636373102e6f6db4
 Source1:	%{name}-modules-targeted.conf
 Source2:	%{name}-booleans-targeted.conf
 Source3:	%{name}-setrans-targeted.conf
@@ -23,7 +23,7 @@ Source10:	%{name}-config
 Patch0:		%{name}-makefile.patch
 Patch1:		%{name}-pld.patch
 URL:		http://oss.tresys.com/projects/refpolicy/
-BuildRequires:	checkpolicy >= 1.32
+BuildRequires:	checkpolicy >= 1.33.1
 BuildRequires:	gawk
 BuildRequires:	m4
 BuildRequires:	policycoreutils >= 1.30
