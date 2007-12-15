@@ -4,12 +4,12 @@
 Summary:	SELinux policy configuration
 Summary(pl.UTF-8):	Konfiguracja polityki SELinuksa
 Name:		refpolicy
-Version:	20070629
+Version:	20071214
 Release:	0.2
 License:	GPL
 Group:		Base
 Source0:	http://oss.tresys.com/files/refpolicy/%{name}-%{version}.tar.bz2
-# Source0-md5:	8762233602b1e660636373102e6f6db4
+# Source0-md5:	63ec05e97e5ce914c73a459d1929cad5
 Source1:	%{name}-modules-targeted.conf
 Source2:	%{name}-booleans-targeted.conf
 Source3:	%{name}-setrans-targeted.conf
@@ -117,10 +117,12 @@ ln -sf ../devel/include $RPM_BUILD_ROOT%{_usr}/share/selinux/%1/include \
 %config(noreplace) %verify(not md5 mtime size) %{_seconfdir}/%1/contexts/*_context* \
 %config(noreplace) %verify(not md5 mtime size) %{_seconfdir}/%1/contexts/*_type* \
 %dir %{_seconfdir}/%1/contexts/files \
+%dir %{_seconfdir}/%1/contexts/users \
 %ghost %{_seconfdir}/%1/contexts/files/file_contexts \
 %ghost %{_seconfdir}/%1/contexts/files/homedir_template \
 %ghost %{_seconfdir}/%1/contexts/files/file_contexts.homedirs \
 %config(noreplace) %verify(not md5 mtime size) %{_seconfdir}/%1/contexts/files/media \
+%config(noreplace) %verify(not md5 mtime size) %{_seconfdir}/%1/contexts/users \
 %config(noreplace) %verify(not md5 mtime size) %{_seconfdir}/%1/setrans.conf \
 %ghost %{_seconfdir}/%1/seusers \
 %dir %{_seconfdir}/%1/modules \
@@ -165,12 +167,12 @@ touch $RPM_BUILD_ROOT%{_seconfdir}/$pol/contexts/files/homedir_template
 touch $RPM_BUILD_ROOT%{_seconfdir}/$pol/contexts/files/file_contexts.homedirs
 done
 
-%{__make} NAME=devel TYPE=targeted DISTRO=%{distro} DIRECT_INITRC=y MONOLITHIC=%{monolithic} DESTDIR=$RPM_BUILD_ROOT PKGNAME=%{name}-%{version} POLY=n install-headers install-docs
+%{__make} NAME=devel TYPE=standard DISTRO=%{distro} DIRECT_INITRC=y MONOLITHIC=%{monolithic} DESTDIR=$RPM_BUILD_ROOT PKGNAME=%{name}-%{version} POLY=n install-headers install-docs
 rm -f $RPM_BUILD_ROOT%{_usr}/share/selinux/devel/include/include
 
-%installCmds targeted targeted y  n
-%installCmds strict strict y n
-%installCmds mls strict-mls n y
+%installCmds targeted standard y n
+%installCmds strict standard y n
+%installCmds mls mls n y
 
 %clean
 rm -rf $RPM_BUILD_ROOT
