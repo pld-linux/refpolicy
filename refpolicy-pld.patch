@@ -70,12 +70,12 @@ diff -ur refpolicy.org/policy/modules/services/postfix.fc refpolicy.pld/policy/m
 diff -ur refpolicy.org/policy/modules/services/ssh.fc refpolicy.pld/policy/modules/services/ssh.fc
 --- refpolicy.org/policy/modules/services/ssh.fc	2006-02-21 19:25:34.000000000 +0100
 +++ refpolicy.pld/policy/modules/services/ssh.fc	2006-04-18 02:14:50.589506250 +0200
-@@ -6,11 +6,19 @@
- /usr/bin/ssh			--	gen_context(system_u:object_r:ssh_exec_t,s0)
+@@ -9,8 +9,16 @@
+ /usr/bin/ssh-agent		--	gen_context(system_u:object_r:ssh_agent_exec_t,s0)
  /usr/bin/ssh-keygen		--	gen_context(system_u:object_r:ssh_keygen_exec_t,s0)
  
 +ifdef(`distro_pld', `
-+/usr/lib/openssh/ssh-keysign 	--	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
++/usr/lib/openssh/ssh-keysign	--	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
 +',`
  /usr/libexec/openssh/ssh-keysign --	gen_context(system_u:object_r:ssh_keysign_exec_t,s0)
 +')
@@ -85,11 +85,8 @@ diff -ur refpolicy.org/policy/modules/services/ssh.fc refpolicy.pld/policy/modul
 +ifdef(`distro_pld', `
 +/var/run/sshd\.pid		--	gen_context(system_u:object_r:sshd_var_run_t,s0)
 +',`
- /var/run/sshd\.init\.pid		--	gen_context(system_u:object_r:sshd_var_run_t,s0)
+ /var/run/sshd\.init\.pid	--	gen_context(system_u:object_r:sshd_var_run_t,s0)
 +')
- 
- ifdef(`targeted_policy', `', `
- /usr/bin/ssh-agent		--	gen_context(system_u:object_r:ssh_agent_exec_t,s0)
 diff -ur refpolicy.org/policy/modules/services/telnet.fc refpolicy.pld/policy/modules/services/telnet.fc
 --- refpolicy.org/policy/modules/services/telnet.fc	2006-02-21 19:25:34.000000000 +0100
 +++ refpolicy.pld/policy/modules/services/telnet.fc	2006-04-18 02:10:59.617243500 +0200
